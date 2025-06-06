@@ -5027,6 +5027,145 @@ ul.hot-posts, .PopularPosts ul.hot-posts {
     display: block;
 }
   }
+
+  /* Enhanced Blog Post Styles (aligned with main.py output) */
+  :root {
+      --primary-color: #3498db;
+      --secondary-color: #2c3e50;
+      --text-color: #333;
+      --light-bg: #f5f7fa;
+      --card-bg: #ffffff;
+      --border-color: #e0e0e0;
+      --shadow-light: 0 4px 15px rgba(0,0,0,0.08);
+      --shadow-hover: 0 6px 20px rgba(0,0,0,0.12);
+  }
+
+  body {
+      font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.7;
+      color: var(--text-color);
+      background: var(--light-bg);
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+  }
+
+  .container {
+      max-width: 850px;
+      margin: 30px auto;
+      padding: 25px;
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: var(--shadow-light);
+      transition: all 0.3s ease-in-out;
+  }
+  .container:hover {
+      box-shadow: var(--shadow-hover);
+  }
+
+  .article-header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-color);
+  }
+
+  .category-tag {
+      display: inline-block;
+      background: var(--primary-color);
+      color: white;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 0.85em;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+  }
+
+  h1 {
+      font-size: 2.2em;
+      color: var(--secondary-color);
+      margin-bottom: 15px;
+      line-height: 1.3;
+  }
+  h2 {
+      font-size: 1.7em;
+      color: var(--secondary-color);
+      margin-top: 30px;
+      margin-bottom: 15px;
+      padding-bottom: 5px;
+      border-bottom: 1px dashed var(--border-color);
+  }
+  h3 {
+      font-size: 1.3em;
+      color: var(--secondary-color);
+      margin-top: 25px;
+      margin-bottom: 10px;
+  }
+
+  p {
+      margin-bottom: 1.2em;
+  }
+
+  .featured-image {
+      width: 100%;
+      height: auto;
+      max-height: 843.75px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-top: 25px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+
+  .in-content-image {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 2em auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.2s ease-in-out;
+  }
+  a:hover {
+      color: #1a5e8c;
+      text-decoration: underline;
+  }
+
+  ul, ol {
+      margin-left: 25px;
+      margin-bottom: 1.5em;
+  }
+  li {
+      margin-bottom: 0.6em;
+  }
+
+  .source-link {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.95em;
+      text-align: center;
+      color: #666;
+  }
+
+  @media (max-width: 768px) {
+      .container {
+          margin: 15px;
+          padding: 15px;
+      }
+      h1 { font-size: 1.8em; }
+      h2 { font-size: 1.5em; }
+      h3 { font-size: 1.2em; }
+      .category-tag { font-size: 0.8em; padding: 6px 14px; }
+  }
 </style>
    </b:if>
 <b:if cond='data:view.isLayoutMode'>
