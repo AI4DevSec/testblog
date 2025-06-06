@@ -14,6 +14,7 @@
     <meta content='summary_large_image' name='twitter:card'/>
     <meta expr:content='data:blog.pageTitle' name='twitter:title'/>
     <meta expr:content='data:blog.metaDescription' name='twitter:description'/>
+    <meta content='#3498db' name='theme-color'/>
     <script type='application/ld+json'>{
       "@context": "https://schema.org",
       "@type": "Blog",
@@ -21,10 +22,11 @@
       "url": "<data:blog.homepageUrl/>"
     }</script>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css' rel='preload' as='style' onload="this.rel='stylesheet'"/>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin='anonymous'/>
     <link href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap' rel='preload' as='style' onload="this.rel='stylesheet'"/>
     <b:skin><![CDATA[
-      :root{--primary-color:#3498db;--dark-bg:#2c3e50;--text-color:#333;--bg-color:#f5f5f5}
-      body{margin:0;font-family:'Roboto',sans-serif;color:var(--text-color);background:var(--bg-color)}
+      :root{--primary-color:#3498db;--secondary-color:#2c3e50;--text-color:#333;--bg-color:#f5f7fa;--card-bg:#fff;--border-color:#e0e0e0;--shadow-light:0 4px 15px rgba(0,0,0,.08);--shadow-hover:0 6px 20px rgba(0,0,0,.12)}
+      body{margin:0;font-family:'Roboto',sans-serif;line-height:1.7;color:var(--text-color);background:var(--bg-color);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
       a{color:var(--primary-color);text-decoration:none}
       header{position:sticky;top:0;background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.1);z-index:10}
       .nav{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1rem}
@@ -34,17 +36,27 @@
       nav a{display:block;padding:.5rem}
       #search{padding:.5rem;border:1px solid #ccc;border-radius:4px}
       .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+      .container{max-width:850px;margin:30px auto;padding:25px;background:var(--card-bg);border-radius:12px;box-shadow:var(--shadow-light);transition:all .3s ease-in-out}
+      .container:hover{box-shadow:var(--shadow-hover)}
+      .article-header{text-align:center;margin-bottom:30px;padding-bottom:20px;border-bottom:1px solid var(--border-color)}
+      .category-tag{display:inline-block;background:var(--primary-color);color:#fff;padding:8px 18px;border-radius:20px;font-size:.85em;font-weight:600;letter-spacing:.8px;margin-bottom:15px;text-transform:uppercase}
       article{background:#fff;padding:1rem;border-radius:8px}
-      footer{background:var(--dark-bg);color:#fff;padding:2rem;text-align:center}
+      footer{background:var(--secondary-color);color:#fff;padding:2rem;text-align:center}
       footer a{color:#fff;margin:0 .25rem}
       .breadcrumb{font-size:.875rem;margin:1rem 0}
       .share{margin-top:1rem}
       .share a{margin-right:.5rem;font-size:1.2rem}
       .related{margin-top:2rem}
+      .source-link{margin-top:40px;padding-top:20px;border-top:1px solid var(--border-color);font-size:.95em;text-align:center;color:#666}
       @media (max-width:768px){
         .menu-toggle{display:block}
         nav ul{display:none;flex-direction:column;background:#fff;position:absolute;top:100%;left:0;right:0;box-shadow:0 2px 4px rgba(0,0,0,.1)}
         nav ul.show{display:flex}
+        .container{margin:15px;padding:15px}
+        h1{font-size:1.8em}
+        h2{font-size:1.5em}
+        h3{font-size:1.2em}
+        .category-tag{font-size:.8em;padding:6px 14px}
       }
       @media(prefers-color-scheme:dark){
         body{background:#121212;color:#e0e0e0}
@@ -62,7 +74,7 @@
   <body>
     <header>
       <div class='nav'>
-        <span class='menu-toggle'><i class='fa fa-bars'></i></span>
+        <button class='menu-toggle' aria-label='Toggle navigation'><i class='fa fa-bars' aria-hidden='true'></i></button>
         <b:section id='header' class='header' maxwidgets='1' showaddelement='no'>
           <b:widget id='Header1' type='Header'/>        
         </b:section>
@@ -82,7 +94,8 @@
         <b:widget id='Blog1' locked='true' type='Blog'>
           <b:includable id='main'>
             <b:loop values='data:posts' var='post'>
-              <article class='post'>
+              <div class='container'>
+                <article class='post'>
                 <h2 class='post-title'><a expr:href='data:post.url'><data:post.title/></a></h2>
                 <div class='post-body'><data:post.body/></div>
                 <div class='share'>
@@ -93,6 +106,7 @@
                 <div class='related'><data:post.relatedPosts/></div>
                 <data:post.comments/>
               </article>
+              </div>
             </b:loop>
           </b:includable>
         </b:widget>
@@ -104,10 +118,10 @@
         <button type="submit">Subscribe</button>
       </form>
       <div class='social'>
-        <a expr:href='data:blog.homepageUrl'><i class='fa fa-home'/></a>
-        <a href='https://facebook.com' aria-label='Facebook'><i class='fa-brands fa-facebook'/></a>
-        <a href='https://x.com'><i class='fa-brands fa-x-twitter'/></a>
-        <a expr:href='"https://wa.me/?text=" + data:post.url' rel='noopener' target='_blank'><i class='fa-brands fa-whatsapp'/></a>
+        <a expr:href='data:blog.homepageUrl' aria-label='Home'><i class='fa fa-home' aria-hidden='true'/></a>
+        <a href='https://facebook.com' aria-label='Facebook'><i class='fa-brands fa-facebook' aria-hidden='true'/></a>
+        <a href='https://x.com' aria-label='X'><i class='fa-brands fa-x-twitter' aria-hidden='true'/></a>
+        <a expr:href='"https://wa.me/?text=" + data:post.url' rel='noopener' target='_blank' aria-label='WhatsApp'><i class='fa-brands fa-whatsapp' aria-hidden='true'/></a>
       </div>
       <div class='links'>
         <b:section id='footer-links' class='footer-links' maxwidgets='1' showaddelement='no'>
