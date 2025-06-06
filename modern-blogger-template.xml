@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:templateVersion='2.0.0' expr:class='data:blog.languageDirection' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+  <head>
+    <meta charset='utf-8'/>
+    <meta content='width=device-width,initial-scale=1' name='viewport'/>
+    <title><data:blog.pageTitle/></title>
+    <link expr:href='data:blog.canonicalUrl' rel='canonical'/>
+    <meta expr:content='data:blog.metaDescription' name='description'/>
+    <meta expr:content='data:blog.title' property='og:site_name'/>
+    <meta expr:content='data:blog.pageTitle' property='og:title'/>
+    <meta expr:content='data:blog.metaDescription' property='og:description'/>
+    <meta expr:content='data:blog.canonicalUrl' property='og:url'/>
+    <meta content='summary_large_image' name='twitter:card'/>
+    <meta expr:content='data:blog.pageTitle' name='twitter:title'/>
+    <meta expr:content='data:blog.metaDescription' name='twitter:description'/>
+    <script type='application/ld+json'>{
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "<data:blog.title/>",
+      "url": "<data:blog.homepageUrl/>"
+    }</script>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css' rel='preload' as='style' onload="this.rel='stylesheet'"/>
+    <link href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap' rel='preload' as='style' onload="this.rel='stylesheet'"/>
+    <b:skin><![CDATA[
+      :root{--primary-color:#3498db;--dark-bg:#2c3e50;--text-color:#333;--bg-color:#f5f5f5}
+      body{margin:0;font-family:'Roboto',sans-serif;color:var(--text-color);background:var(--bg-color)}
+      a{color:var(--primary-color);text-decoration:none}
+      header{position:sticky;top:0;background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.1);z-index:10}
+      .nav{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1rem}
+      .menu-toggle{display:none;font-size:1.5rem;cursor:pointer}
+      nav ul{display:flex;gap:1rem;margin:0;padding:0;list-style:none}
+      nav li{position:relative}
+      nav a{display:block;padding:.5rem}
+      #search{padding:.5rem;border:1px solid #ccc;border-radius:4px}
+      .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+      article{background:#fff;padding:1rem;border-radius:8px}
+      footer{background:var(--dark-bg);color:#fff;padding:2rem;text-align:center}
+      footer a{color:#fff;margin:0 .25rem}
+      .breadcrumb{font-size:.875rem;margin:1rem 0}
+      .share{margin-top:1rem}
+      .share a{margin-right:.5rem;font-size:1.2rem}
+      .related{margin-top:2rem}
+      @media (max-width:768px){
+        .menu-toggle{display:block}
+        nav ul{display:none;flex-direction:column;background:#fff;position:absolute;top:100%;left:0;right:0;box-shadow:0 2px 4px rgba(0,0,0,.1)}
+        nav ul.show{display:flex}
+      }
+      @media(prefers-color-scheme:dark){
+        body{background:#121212;color:#e0e0e0}
+        header,article{background:#1e1e1e}
+        a{color:#8ab4f8}
+      }
+    ]]></b:skin>
+    <script><![CDATA[
+      document.addEventListener('DOMContentLoaded',function(){
+        var t=document.querySelector('.menu-toggle'),n=document.querySelector('nav ul');
+        t&&t.addEventListener('click',function(){n.classList.toggle('show')});
+      });
+    ]]></script>
+  </head>
+  <body>
+    <header>
+      <div class='nav'>
+        <span class='menu-toggle'><i class='fa fa-bars'></i></span>
+        <b:section id='header' class='header' maxwidgets='1' showaddelement='no'>
+          <b:widget id='Header1' type='Header'/>        
+        </b:section>
+        <nav>
+          <ul>
+            <b:section id='main-menu' class='main-menu' maxwidgets='1' showaddelement='no'>
+              <b:widget id='LinkList1' type='LinkList'/>
+            </b:section>
+          </ul>
+        </nav>
+        <input id='search' expr:placeholder='data:messages.searchPlaceholder' type='text'/>      
+      </div>
+    </header>
+    <main>
+      <div class='breadcrumb'><data:post.breadcrumbs/></div>
+      <b:section id='main' class='grid' maxwidgets='1' showaddelement='no'>
+        <b:widget id='Blog1' locked='true' type='Blog'>
+          <b:includable id='main'>
+            <b:loop values='data:posts' var='post'>
+              <article class='post'>
+                <h2 class='post-title'><a expr:href='data:post.url'><data:post.title/></a></h2>
+                <div class='post-body'><data:post.body/></div>
+                <div class='share'>
+                  <a expr:href='"https://facebook.com/sharer.php?u=" + data:post.url' rel='noopener' target='_blank'><i class='fa-brands fa-facebook'></i></a>
+                  <a expr:href='"https://x.com/intent/tweet?url=" + data:post.url' rel='noopener' target='_blank'><i class='fa-brands fa-x-twitter'></i></a>
+                  <a expr:href='"https://api.whatsapp.com/send?text=" + data:post.url' rel='noopener' target='_blank'><i class='fa-brands fa-whatsapp'></i></a>
+                </div>
+                <div class='related'><data:post.relatedPosts/></div>
+                <data:post.comments/>
+              </article>
+            </b:loop>
+          </b:includable>
+        </b:widget>
+      </b:section>
+</main>
+<footer>
+      <form class="newsletter" action="#" method="post">
+        <label>Email:<input type="email" placeholder="Subscribe" required='required'/></label>
+        <button type="submit">Subscribe</button>
+      </form>
+      <div class='social'>
+        <a expr:href='data:blog.homepageUrl'><i class='fa fa-home'/></a>
+        <a href='https://facebook.com' aria-label='Facebook'><i class='fa-brands fa-facebook'/></a>
+        <a href='https://x.com'><i class='fa-brands fa-x-twitter'/></a>
+        <a expr:href='"https://wa.me/?text=" + data:post.url' rel='noopener' target='_blank'><i class='fa-brands fa-whatsapp'/></a>
+      </div>
+      <div class='links'>
+        <b:section id='footer-links' class='footer-links' maxwidgets='1' showaddelement='no'>
+          <b:widget id='LinkList2' type='LinkList'/>
+        </b:section>
+      </div>
+      <div class='copyright'>© <data:blog.title/> - <data:blog.pageTitle/></div>
+    </footer>
+    <script defer='defer' src='https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js'/>
+  </body>
+</html>
